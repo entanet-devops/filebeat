@@ -1,0 +1,21 @@
+galaxy_info:
+  author: DevOps
+  description: Filebeat
+  company: Entanet
+
+  license: BSD
+
+  min_ansible_version: 2.7
+
+  platforms:
+  - name: Ubuntu
+    versions:
+      - bionic
+
+  galaxy_tags:
+    - filebeat
+    - entanet
+
+dependencies: 
+  - src: geerlingguy.filebeat
+    version: 2.0.0

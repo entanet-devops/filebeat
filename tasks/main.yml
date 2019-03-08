@@ -1,0 +1,11 @@
+- name: Include base role.
+  include_role:
+    name: geerlingguy.filebeat
+
+- name: Copy Filebeat configuration.
+  template:
+    src: filebeat.yml.j2
+    dest: "/etc/filebeat/filebeat.yml"
+    owner: root
+    group: root
+    mode: 0644

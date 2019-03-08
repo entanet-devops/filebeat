@@ -1,0 +1,42 @@
+filebeat:
+  # List of prospectors to fetch data.
+  inputs:
+    {{ filebeat_inputs | to_json }}
+
+# Configure what outputs to use when sending the data collected by the beat.
+# Multiple outputs may be used.
+output:
+
+{% if filebeat_output_kafka_enabled %}
+  ### Kafka as output
+  kafka:
+    # The kafka brokers 
+    hosts: {{ filebeat_output_kafka_hosts | to_json }}
+
+    # message topic selection + partitioning
+    topic: {{ filebeat_kafka_topic }}
+    partition.round_robin:
+      reachable_only: false
+
+    required_acks: 1
+    compression: gzip
+    max_message_bytes: 1000000
+
+{% endif %}
+
+{% if filebeat_enable_logging %}
+logging:
+  ### Filebeat log
+  level: {{ filebeat_log_level }}
+
+  # Enable file rotation with default configuration
+  to_files: true
+
+  # Do not log to syslog
+  to_syslog: false
+
+  files:
+    path: {{ filebeat_log_dir }}
+    name: {{ filebeat_log_filename }}
+    keepfiles: 7
+{% endif %}
