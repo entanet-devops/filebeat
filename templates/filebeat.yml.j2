@@ -14,7 +14,7 @@ output:
     hosts: {{ filebeat_output_kafka_hosts | to_json }}
 
     # message topic selection + partitioning
-    topic: {{ filebeat_kafka_topic }}
+    topic: {{ filebeat_output_kafka_topic }}
     partition.round_robin:
       reachable_only: false
 

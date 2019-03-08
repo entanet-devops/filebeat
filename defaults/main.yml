@@ -14,5 +14,6 @@ filebeat_output_kafka_hosts:
   - "kafka-1:9092"
   - "kafka-2:9092"
   - "kafka-3:9092"
+filebeat_output_kafka_topic: entanet_filebeat
 
 filebeat_enable_logging: true
