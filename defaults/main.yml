@@ -17,3 +17,5 @@ filebeat_output_kafka_hosts:
 filebeat_output_kafka_topic: entanet_filebeat
 
 filebeat_enable_logging: true
+
+filebeat_version: 7.x
