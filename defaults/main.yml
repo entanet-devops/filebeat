@@ -10,12 +10,11 @@ filebeat_inputs:
 filebeat_create_config: false
 
 filebeat_output_kafka_enabled: true
-filebeat_output_kafka_hosts:
-  - "kafka-1:9092"
-  - "kafka-2:9092"
-  - "kafka-3:9092"
+
 filebeat_output_kafka_topic: entanet_filebeat
 
 filebeat_enable_logging: true
 
 filebeat_version: 7.x
+
+filebeat_output_kafka_hosts: "{{ lookup('aws_ssm', '/platform/' +  (project_environment | default('production')) + '/filebeat/kafka_brokers').split(',') | default(['kafka-1:9092', 'kafka-2:9092', 'kafka-3:9092']) }}"
