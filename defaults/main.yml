@@ -5,6 +5,7 @@ filebeat_inputs:
       - "/var/log/syslog"
       - "/var/log/*/*.log"
       - "/apps/*/storage/logs/*.log"
+    tail_files: false
 
 # disable geerlingguy config
 filebeat_create_config: false
