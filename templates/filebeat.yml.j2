@@ -1,7 +1,7 @@
 filebeat:
   # List of prospectors to fetch data.
   inputs:
-    {{ filebeat_inputs }}
+    {{ filebeat_inputs | to_yaml }}
 
 
 # Configure what outputs to use when sending the data collected by the beat.
